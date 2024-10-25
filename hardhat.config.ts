@@ -1,22 +1,27 @@
-import("@nomiclabs/hardhat-ethers");
-import("@nomiclabs/hardhat-waffle");
-import dotenv from "dotenv";
-
-const argv = JSON.parse(env("npm_config_argv"));
-if (argv.original !== ["hardhat", "test"]) {
-  require('dotenv').config();
-}
-
-import("./tasks/nft");
-
 import { HardhatUserConfig } from "hardhat/config";
+import "@nomiclabs/hardhat-ethers";
+import "@nomiclabs/hardhat-waffle";
+import * as dotenv from "dotenv";
+import "./tasks/nft";  // Make sure tasks are correctly imported
+
+// Load environment variables
+dotenv.config();
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.0",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.27", // Your main contract version
+      },
+      {
+        version: "0.8.1", // OpenZeppelin dependencies
+      },
+    ],
+  },
   networks: {
     sepolia: {
-      url: `https://eth-sepolia.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
-      accounts: [process.env.ETH_PRIVATE_KEY],
+      url: `https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+      accounts: process.env.ETH_PRIVATE_KEY ? [process.env.ETH_PRIVATE_KEY] : [],
     },
   },
 };

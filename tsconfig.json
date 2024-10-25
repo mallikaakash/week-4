@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "types": ["chai", "mocha"], 
+      "target": "ES2020",
+      "module": "CommonJS",
+      "moduleResolution": "Node",
+      "strict": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "skipLibCheck": true,
+      
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "allowSyntheticDefaultImports": true,
+      "noEmit": false,
+      "lib": ["ES2020", "DOM"]
+    },
+    "include": ["**/*.ts"],  // Adjust include path to find all .ts files
+    "exclude": ["node_modules", "dist"]
+  }
+  

@@ -3,7 +3,7 @@ import { expect } from "chai";
 import { Contract, Wallet } from "ethers";
 import { TransactionResponse } from "@ethersproject/abstract-provider";
 import sinon from "sinon";
-import { deployTestContract } from "./test-helper";
+import { deployTestContract } from "./test-helpers";
 import * as provider from "../lib/provider";
 
 describe("MyNFT", () => {
